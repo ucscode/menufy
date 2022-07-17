@@ -2,9 +2,7 @@
 ### The magic menu manager. 
 ### A simple professional way to manage menu list
 
-// menufy - your favorite menu editor
-
-Menufy is a class that is use to manage a system menu. 
+Menufy is a class that manages a system or panel menu. 
 When creating a cpanel, the menu is most times arranged using the <ul></ul> tag in HTML format. For example;
 
 	<ul class="menu-list">
