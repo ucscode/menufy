@@ -14,8 +14,11 @@ When creating a cpanel, the menu is most times arranged using the &lt;ul&gt;&lt;
 		</li>
 		
 		<!--- menu 2 --->
+		
 		<li class="menu-item">
+		
 			<a href='#'>Account</a>
+			
 			<ul class="dropdown"> <!-- dropdown for account -->
 			
 				<li class="menu-item">
