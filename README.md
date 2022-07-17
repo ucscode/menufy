@@ -26,7 +26,9 @@ When creating a cpanel, the menu is most times arranged using the &lt;ul&gt;&lt;
 				</li>
 					
 				<li class="menu-item">
+				
 					<a href='javascript:void(0)'>Settings</a>
+					
 					<ul class="dropdown"> <!--- dropdown for settings --->
 						<li class="menu-item">
 							<a href='profile-settings.php'> Profile </a>
@@ -34,27 +36,32 @@ When creating a cpanel, the menu is most times arranged using the &lt;ul&gt;&lt;
 							<a href='preference-settings.php'> Change Preference </a>
 						</li>
 					</ul>
-				</li>
+					
+				</li> <!-- /menu-item -->
 				
-			</ul>
+			</ul> <!-- /dropdown for account -->
+			
 		</li>
 		
 		<!--- menu 3 --->
+		
 		<li class="menu-item">
 			<a href='logout-link.php'>Logout</a>
 		</li>
 		
 	</ul>
 
-Now, whenever you want to add a new menu to the list or you want to remove a menu from the list, you must edit the file that contains the menu.
-This is not helpful especially when the menu needs to be replicated in different pages.
-Like, you want "dashboard page" to show "Logout" as the last menu item.
-But, you want "settings page" to show "Back to dashboard" as the last menu item.
-Then, you will need to edit both files to change each menu items.
+Now, whenever you want to add a new menu to the list or you want to remove a menu from the list, you must edit the file that contains the menu.\
+This is not always helpful especially when the menu needs to be replicated in different pages.\
 
-With menufy, things get a lot easier. The menufy class arranges your menu in an array format giving you an easier method to programmically add or remove any section of your menu without editing any single page.
+For example, you want "dashboard page" to show "Logout" as the last menu item.\
+But! You want "settings page" to show "Back to dashboard" as the last menu item.\
+Then, you will need to edit both files to change each menu items. \
 
-How it works;
+With menufy, things get a lot easier. \
+The menufy class arranges your menu in an array which provides you with an easier method to programmically add or remove any section of your menu without editing any single page.
+
+##How it works;
 
 Using the HTML menu above as an example, we will create an equivalent using the menufy class
 
