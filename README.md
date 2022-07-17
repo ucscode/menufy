@@ -52,11 +52,11 @@ When creating a cpanel, the menu is most times arranged using the &lt;ul&gt;&lt;
 	</ul>
 
 Now, whenever you want to add a new menu to the list or you want to remove a menu from the list, you must edit the file that contains the menu.\
-This is not always helpful especially when the menu needs to be replicated in different pages.\
+This is not always helpful especially when the menu needs to be replicated in different pages.
 
 For example, you want "dashboard page" to show "Logout" as the last menu item.\
 But! You want "settings page" to show "Back to dashboard" as the last menu item.\
-Then, you will need to edit both files to change each menu items. \
+Then, you will need to edit both files to change each menu items.
 
 With menufy, things get a lot easier. \
 The menufy class arranges your menu in an array which provides you with an easier method to programmically add or remove any section of your menu without editing any single page.
@@ -67,7 +67,8 @@ Using the HTML menu above as an example, we will create an equivalent using the 
 
 	$menu = new menufy();
 
-	// Menu 1; - [depth=0]
+
+	// Menu 1; [depth=0]
 
 	$menu->add("menu-1", array(
 		"label" => "Dashboard",
@@ -75,25 +76,29 @@ Using the HTML menu above as an example, we will create an equivalent using the 
 	));
 
 
-	// Menu 2; - [depth=0]
+	// Menu 2; [depth=0]
 
 	$menu->add("menu-2", array(
-		"label" => "Account"
-	)); // if link is not set, link will default to '#'
+		"label" => "Account",
+		"link" => 'javascript:void(0)' // if link is not set, link will default to '#'
+	)); 
 
-		// submenu for: Menu 2 - [depth=1]
+
+		// submenu for: Menu 2 [depth=1]
 		
 		$menu->add_submenu("menu-2", "submenu-1", array(
 			"label" => "Activities",
 			"link" => "the-activities.php"
 		));
 
+
 		$menu->add_submenu("menu-2", "submenu-2", array(
 			"label" => "Settings",
 			"link" => "javascript:void(0)"
 		));
 
-			// submenu for: Menu 2 > Submenu 2 - [depth=2]
+
+			// submenu for: Menu 2 > Submenu 2 [depth=2]
 			
 			$menu->add_submenu("menu-2.submenu-2", "inner-menu-1", array(
 				"label" => "Profile",
@@ -111,7 +116,8 @@ Using the HTML menu above as an example, we will create an equivalent using the 
 			));
 			
 
-	// Menu 3; - [depth=0]
+
+	// Menu 3; [depth=0]
 
 	$menu->add("menu-3", array(
 		"label" => "logout",
@@ -119,14 +125,15 @@ Using the HTML menu above as an example, we will create an equivalent using the 
 	));
 
 
-The above menu will be created an arranged in an array. Although, it doesn't do anything because it has not been added to the HTML page.
+The above menu will be created an arranged in an array.\ 
+However, it will not do anything because it has not been added to the HTML page.
 
-Next, On the section where the HTML Menu is suppose to appear, you write the following code;
+Next: On the section where the HTML Menu is suppose to appear, you write the following code;
 
 	<ul class="menu-list">
 		<?php $menu->enlist(null, function($data, $name, $menu) {
 				ob_start();
-			?>
+	?>
 				<li class="menu-item">
 					<a href="<?php echo $data['link']; ?>"><?php echo $data['label']; ?></a>
 					<?php if( !empty($data['submenu']) ): ?>
