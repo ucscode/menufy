@@ -55,7 +55,9 @@ class menufy {
 	}
 	
 	public function search( string $menupath ) {
-		$menupath = explode($this->delimeter, $menupath);
+		$menupath = array_filter(explode($this->delimeter, $menupath), function($key) {
+			return (trim($key) != ''); 
+		});
 		$pathloop = '';
 		$parent = null;
 		foreach( $menupath as $menukey ) {
