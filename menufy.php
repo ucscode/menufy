@@ -99,5 +99,24 @@ class menufy {
 		endforeach;
 		
 	}
+	
+	/*
+		enlist(): usage sample
+		
+		$menu->enlist(null, function($data, $name, $menu) {
+			ob_start();
+		?>
+			<li class="menu-item">
+				<a href="<?php echo $data['link']; ?>"><?php echo $data['label']; ?></a>
+				<?php if( !empty($data['submenu']) ): ?>
+					<ul class="dropdown"><?php $menu->enlist($data['submenu']); ?></ul>
+				<?php endif; ?>	
+			</li>
+		<?php 
+			$menu_item = ob_get_clean();
+			return $menu_item;
+		});
+		
+	*/
 
 }
