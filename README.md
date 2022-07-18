@@ -58,10 +58,10 @@ For example, you want "dashboard page" to show "Logout" as the last menu item.\
 But! You want "settings page" to show "Back to dashboard" as the last menu item.\
 Then, you will need to edit both files to change each menu items.
 
-With menufy, things get a lot easier. \
+With menufy, things get a lot easier.\
 The menufy class arranges your menu in an array which provides you with an easier method to programmically add or remove any section of your menu without editing any single page.
 
-##How it works;
+### How it works;
 
 Using the HTML menu above as an example, we will create an equivalent using the menufy class
 
@@ -131,9 +131,10 @@ However, it will not do anything because it has not been added to the HTML page.
 Next: On the section where the HTML Menu is suppose to appear, you write the following code;
 
 	<ul class="menu-list">
-		<?php $menu->enlist(null, function($data, $name, $menu) {
+		<?php 
+			$menu->enlist(null, function($data, $name, $menu) {
 				ob_start();
-	?>
+			?>
 				<li class="menu-item">
 					<a href="<?php echo $data['link']; ?>"><?php echo $data['label']; ?></a>
 					<?php if( !empty($data['submenu']) ): ?>
@@ -155,29 +156,52 @@ The function will list all menu in [depth=0]. Then,
 		<ul class="dropdown"><?php $menu->enlist($data['submenu']); ?></ul>
 	<?php endif; ?>
 
-The above function checks if there is a submenu and list them within the root menu.
-This iteration continues to check for submenu's until all menu are listed.
+The above code checks if there is a submenu and list them within the root menu.
+This iteration continues to check for submenu's until all menu are listed within their parent menu.
 
 The output however is based on what you returned in the function at parameter 2.
 
+#### Note:
 In all menu, label is required.
+
 You can add any other data you want to the array you passed to the menu. However, depth & submenu will be overridden;
-Now you can freely update or remove any menu at any time.
+
+After adding the enlist code, you can freely update or remove any menu at any time.
 
 	// add submenu under menu-1
 	
 	$menu->add_submenu("menu-1", "submenu-name", array(
 		"label" => "second level",
-		"link" => "javascript:void(0)", // do nothing
+		"link" => "javascript:void(0)", 
 		"depth" => 44, // will be overridden to 1,
 		"submenu" => "crack" // will be overridden to an empty array,
 		"class" => "my-custom-class",
 		"info" => "other-custom-info"
 	));
 	
+	
 	// remove preference from submenu-2 
 	
 	$menu->detach("menu-2.submenu-2.inner-menu-3");
+	
+	// remove menu 3
+	
+	$menu->detach("menu-3");
+	
+	
+	/* Add menu based on condition */
+	
+	if( 1 == true ) {
+		$menu->add("new-menu", array(
+			"label" => "Visit my website",
+			"link" => "https://ucscode.com"
+		));
+	} else {
+		$menu->add_submenu("menu-2.submenu-1", "submenu-name", array(
+			"label" => "Recent activities",
+			"link" => "recent-link.php"
+		));
+	}
 	
 
 Try it! You're gonna love it.
